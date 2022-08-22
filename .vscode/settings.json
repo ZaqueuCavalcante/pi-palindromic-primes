@@ -1,0 +1,5 @@
+{
+    "files.exclude": {
+        "**/pi_billion*": true,
+    }
+}
