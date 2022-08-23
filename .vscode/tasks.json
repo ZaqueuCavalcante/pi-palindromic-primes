@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/get_digits/get_digits.csproj",
+                "${workspaceFolder}/find_pal_primes/find_pal_primes.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/get_digits/get_digits.csproj",
+                "${workspaceFolder}/find_pal_primes/find_pal_primes.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/get_digits/get_digits.csproj"
+                "${workspaceFolder}/find_pal_primes/find_pal_primes.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

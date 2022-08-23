@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/get_digits/bin/Debug/net6.0/get_digits.dll",
+            "program": "${workspaceFolder}/find_pal_primes/bin/Debug/net6.0/find_pal_primes.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/get_digits",
+            "cwd": "${workspaceFolder}/find_pal_primes",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
