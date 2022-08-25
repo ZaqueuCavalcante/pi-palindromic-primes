@@ -32,11 +32,6 @@ async Task GetOneMillionDigits(int start)
         myPi += json.Substring(12, numberOfDigits);
 
         startMillion += numberOfDigitsLong;
-
-        if (i % 100 == 0)
-        {
-            Console.WriteLine($"File_{billion}__{start} -> {i/10}%");
-        }
     }
 
     Directory.CreateDirectory($"..\\pi_billion_{billion}_{billion+1}");
@@ -52,8 +47,8 @@ while (true)
     var tasks = new List<Task>();
 
     var billion = 0;
-    var million = 33_000;
-    var filesToGet = 500;
+    var million = 860_000;
+    var filesToGet = 400;
 
     for (int i = 0; i < filesToGet;)
     {

@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30114.105
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "file_handler", "file_handler\file_handler.csproj", "{27770436-CC6C-484B-BFAD-4B4BC565B39A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "find_pal_primes", "find_pal_primes\find_pal_primes.csproj", "{97AB256B-1D2E-446B-B103-A81CB6188902}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "get_digits", "get_digits\get_digits.csproj", "{0E1B5405-8979-448C-8AA9-AE3999C5E770}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{27770436-CC6C-484B-BFAD-4B4BC565B39A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27770436-CC6C-484B-BFAD-4B4BC565B39A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27770436-CC6C-484B-BFAD-4B4BC565B39A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27770436-CC6C-484B-BFAD-4B4BC565B39A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97AB256B-1D2E-446B-B103-A81CB6188902}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97AB256B-1D2E-446B-B103-A81CB6188902}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97AB256B-1D2E-446B-B103-A81CB6188902}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97AB256B-1D2E-446B-B103-A81CB6188902}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0E1B5405-8979-448C-8AA9-AE3999C5E770}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E1B5405-8979-448C-8AA9-AE3999C5E770}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E1B5405-8979-448C-8AA9-AE3999C5E770}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E1B5405-8979-448C-8AA9-AE3999C5E770}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

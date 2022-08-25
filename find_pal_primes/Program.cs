@@ -1,23 +1,49 @@
-﻿using System.Diagnostics;
+﻿using System.Text;
+using System.Diagnostics;
+using System.Numerics;
 
-bool IsPrime(ulong number)
+var watch = Stopwatch.StartNew();
+Console.WriteLine("START");
+
+var millionOut = 860_000;
+var digitsOut = 21;
+
+while (true)
 {
-    if (number%2 == 0) return false;
+    var tasks = new List<Task>();
 
-    var max = (ulong) Math.Sqrt(number);
+    for (int i = 0; i < 500; i++)
+    {
+        tasks.Add(GetFirstPalindromicPrime(millionOut, digitsOut));
+        millionOut ++;
+    }
+
+    Console.WriteLine($"Find in {tasks.Count} files --- last_million={millionOut}");
+    await Task.WhenAll(tasks);
+}
+
+// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
+
+bool IsPrime(string number)
+{
+    BigInteger numberAsIint = BigInteger.Parse(number);
+
+    if (numberAsIint % 2 == 0) return false;
+
+    BigInteger max = (BigInteger) Math.Sqrt(double.Parse(number));
     for (ulong i = 3; i < max+1; i += 2)
     {
-        if (number%i == 0) return false;
+        if (numberAsIint % i == 0) return false;
     }
     return true;
 }
 
 async Task<bool> GetFirstPalindromicPrime(int million, int digits)
 {
-    var myPi = "31415";
+    var myPi = new StringBuilder(1_000_000, 1_000_000);
     var billion = (int) (million / 1000);
     var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
-    myPi = await File.ReadAllTextAsync(fileName);
+    myPi.Append(await File.ReadAllTextAsync(fileName));
 
     var endMax = myPi.Length - 1;
     var stepToCenter = (int) (digits/2 - 1);
@@ -47,15 +73,18 @@ async Task<bool> GetFirstPalindromicPrime(int million, int digits)
                         } else {
                             isPalindromic = false;
                             break;
-                        }   
+                        }
                     }
                     if (isPalindromic)
                     {
-                        var number = myPi.Substring(start, digits);
+                        var number = myPi.ToString(start, digits);
                         Console.WriteLine($"palindromic={number} ---- in index={start} ---- of file=pi_million_{million}");
-                        if (IsPrime(ulong.Parse(number)))
+                        if (IsPrime(number))
                         {
-                            return true;
+                            watch!.Stop();
+                            Console.WriteLine($"Duration = {watch.ElapsedMilliseconds} milliseconds...");
+                            Console.WriteLine($"FIND -> {number} ---- in index={start} ---- of file=pi_million_{million}");
+                            throw new Exception("FIND");
                         }
                     }
                 }
@@ -70,27 +99,3 @@ async Task<bool> GetFirstPalindromicPrime(int million, int digits)
 
     return false;
 }
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
-
-var watch = Stopwatch.StartNew();
-Console.WriteLine("START");
-
-var million = 0;
-var digits = 19;
-
-var found = false;
-while (!found)
-{
-    found = await GetFirstPalindromicPrime(million, digits);
-    million ++;
-}
-
-watch.Stop();
-Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
-
-// - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
-
-
-
-
