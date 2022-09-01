@@ -1,14 +1,17 @@
 ﻿using System.Net;
+using System.Text;
 
 async Task GetOneMillionDigits(int start)
 {
+    Console.WriteLine($"START MILLION -> {start}");
+
     using var client = new HttpClient();
-    var numberOfDigits = 1000;
+    var numberOfDigits = 1_000;
     var numberOfDigitsLong = (ulong) numberOfDigits;
 
     var billion = (int) (start / 1000);
     ulong startMillion = (ulong) start * 1_000_000;
-    var myPi = "";
+    var myPi = new StringBuilder(1_000_000, 1_000_000);
 
     HttpResponseMessage response;
     string json;
@@ -17,9 +20,8 @@ async Task GetOneMillionDigits(int start)
     {
         try
         {
-            do {
-                response = await client.GetAsync($"https://api.pi.delivery/v1/pi?start={startMillion}&numberOfDigits={numberOfDigits}&radix=10");
-            } while (response.StatusCode != HttpStatusCode.OK);
+            response = await client.GetAsync($"https://api.pi.delivery/v1/pi?start={startMillion}&numberOfDigits={numberOfDigits}&radix=10");
+            if (response.StatusCode != HttpStatusCode.OK) { throw new Exception(""); }
         }
         catch (System.Exception)
         {
@@ -29,13 +31,13 @@ async Task GetOneMillionDigits(int start)
 
         json = await response.Content.ReadAsStringAsync();
 
-        myPi += json.Substring(12, numberOfDigits);
+        myPi.Append(json.Substring(12, numberOfDigits));
 
         startMillion += numberOfDigitsLong;
     }
 
     Directory.CreateDirectory($"..\\pi_billion_{billion}_{billion+1}");
-    await File.WriteAllTextAsync($"..\\pi_billion_{billion}_{billion+1}\\pi_million_{start}_{start+1}.txt", myPi);
+    await File.WriteAllTextAsync($"..\\pi_billion_{billion}_{billion+1}\\pi_million_{start}_{start+1}.txt", myPi.ToString());
 
     Console.WriteLine($"END -> {start}_{start+1}");
 }
@@ -47,8 +49,8 @@ while (true)
     var tasks = new List<Task>();
 
     var billion = 0;
-    var million = 860_000;
-    var filesToGet = 400;
+    var million = 99_000;
+    var filesToGet = 26;
 
     for (int i = 0; i < filesToGet;)
     {

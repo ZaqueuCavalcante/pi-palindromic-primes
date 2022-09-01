@@ -1,12 +1,9 @@
 ﻿using System.Text;
-using System.Diagnostics;
-using System.Numerics;
 
-var watch = Stopwatch.StartNew();
 Console.WriteLine("START");
 
-var millionOut = 860_000;
-var digitsOut = 21;
+var millionOut = 0;
+var digitsOut = 23;
 
 while (true)
 {
@@ -18,32 +15,27 @@ while (true)
         millionOut ++;
     }
 
-    Console.WriteLine($"Find in {tasks.Count} files --- last_million={millionOut}");
+    Console.WriteLine($"Find in {tasks.Count} files --- last_million={millionOut-1}");
     await Task.WhenAll(tasks);
 }
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
-bool IsPrime(string number)
-{
-    BigInteger numberAsIint = BigInteger.Parse(number);
 
-    if (numberAsIint % 2 == 0) return false;
-
-    BigInteger max = (BigInteger) Math.Sqrt(double.Parse(number));
-    for (ulong i = 3; i < max+1; i += 2)
-    {
-        if (numberAsIint % i == 0) return false;
-    }
-    return true;
-}
 
 async Task<bool> GetFirstPalindromicPrime(int million, int digits)
 {
-    var myPi = new StringBuilder(1_000_000, 1_000_000);
+    var myPi = new StringBuilder(1_000_000 + digits, 1_000_000 + digits);
     var billion = (int) (million / 1000);
     var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
     myPi.Append(await File.ReadAllTextAsync(fileName));
+
+    var nextMillion = million + 1;
+    var nextBillion = (int) (nextMillion / 1000);
+    var nextFileName = $"..\\pi_billion_{nextBillion}_{nextBillion+1}\\pi_million_{nextMillion}_{nextMillion+1}.txt";
+    var nextDigits = (await File.ReadAllTextAsync(nextFileName)).Substring(0, digits);
+
+    myPi.Append(nextDigits);
 
     var endMax = myPi.Length - 1;
     var stepToCenter = (int) (digits/2 - 1);
@@ -79,13 +71,6 @@ async Task<bool> GetFirstPalindromicPrime(int million, int digits)
                     {
                         var number = myPi.ToString(start, digits);
                         Console.WriteLine($"palindromic={number} ---- in index={start} ---- of file=pi_million_{million}");
-                        if (IsPrime(number))
-                        {
-                            watch!.Stop();
-                            Console.WriteLine($"Duration = {watch.ElapsedMilliseconds} milliseconds...");
-                            Console.WriteLine($"FIND -> {number} ---- in index={start} ---- of file=pi_million_{million}");
-                            throw new Exception("FIND");
-                        }
                     }
                 }
             }

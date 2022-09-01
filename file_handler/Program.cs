@@ -1,28 +1,40 @@
 ﻿using System.Diagnostics;
 using System.Text;
+using Dapper;
+using Npgsql;
+
+var cnn = "Server=35.199.95.198;Database=postgres;Uid=zaqueu;Pwd=HK|G]TsGr8$NEp7r#4m3E&1%mR6c;";
 
 var watch = Stopwatch.StartNew();
 Console.WriteLine("Start...");
 
-var million = 6_000;
-var millionHundred = 0;
-var billion = (int) (million / 1000);
+var million = 0;
 
-for (int i = 0; i < 10; i++)
+using var connection = new NpgsqlConnection(cnn);
+var sql = "SELECT million FROM ppp.pi WHERE million >= @Million AND million <= 100000";
+var allMillions = (await connection.QueryAsync<int>(sql, new { @Million = million })).ToList();
+
+while (million < 144_000)
 {
     var myPi = new StringBuilder(100_000_000, 100_000_000);
-    millionHundred = (int) (million / 100);
-    
-    for (int j = 0; j < 100; j++)
+
+    var billion = (int) (million / 1000);
+    var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
+
+    if (!allMillions.Contains(million) && File.Exists(fileName))
     {
-        var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
         myPi.Append(await File.ReadAllTextAsync(fileName));
-        million ++;
+
+        var sqlInsert = "INSERT INTO ppp.pi (million, digits) VALUES(@Million, @Digits)";
+        await connection.ExecuteAsync(sqlInsert, new { Million = million, Digits = myPi.ToString(), });
+
+        Console.WriteLine($"Finish million = {million}");
     }
 
-    await File.WriteAllTextAsync($"..\\pi_billion_{billion}_{billion+1}\\pi_million_hundred_{millionHundred}_{millionHundred+1}.txt", myPi.ToString());
-    Console.WriteLine($"Finish million_hundred = {millionHundred}");
+    million ++;
 }
 
+
+
 watch!.Stop();
-Console.WriteLine($"Duration = {watch.ElapsedMilliseconds} seconds...");
+Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
