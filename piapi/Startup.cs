@@ -5,7 +5,7 @@ namespace PiApi;
 
 public class Startup
 {
-    public static string Cnn = "Server=35.199.95.198;Database=postgres;Uid=zaqueu;Pwd=HK|G]TsGr8$NEp7r#4m3E&1%mR6c;";
+    public static string Cnn = "Server=35.199.95.198;Database=postgres;Uid=zaqueu;Pwd=???;";
 
     public void ConfigureServices(IServiceCollection services)
     {

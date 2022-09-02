@@ -3,7 +3,7 @@ using System.Text;
 using Dapper;
 using Npgsql;
 
-var cnn = "Server=35.199.95.198;Database=postgres;Uid=zaqueu;Pwd=HK|G]TsGr8$NEp7r#4m3E&1%mR6c;";
+var cnn = "Server=35.199.95.198;Database=postgres;Uid=zaqueu;Pwd=???;";
 
 var watch = Stopwatch.StartNew();
 Console.WriteLine("Start...");
@@ -33,8 +33,6 @@ while (million < 144_000)
 
     million ++;
 }
-
-
 
 watch!.Stop();
 Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");

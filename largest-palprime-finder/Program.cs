@@ -94,7 +94,6 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=113759404957311 ---- in index=477737293 ---- of file=pi_million_500
 
 
-
 // First 100_000_000 palprimes >= 19 digits
 // palindromic=1673530243420353761 ---- with digits=19 ---- in index=836814879
 // palindromic=1268008427248008621 ---- with digits=19 ---- in index=1202100884
@@ -134,5 +133,3 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=9511275355535721159 ---- with digits=19 ---- in index=92291382822
 // palindromic=9531205620265021359 ---- with digits=19 ---- in index=92390077443
 // palindromic=1804125751575214081 ---- with digits=19 ---- in index=94605800483
-
-

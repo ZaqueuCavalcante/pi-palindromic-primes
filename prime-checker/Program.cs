@@ -7,9 +7,6 @@ using System.Security.Cryptography;
 
 // Factoring with Elliptic Curves - https://youtu.be/2JlpeQWtGH8
 // 1º -> Fermat Test for a bunch of random bases (make optimizations)
-// 
-
-
 
 bool IsPrimeTrivial(string number)
 {
@@ -85,12 +82,7 @@ Console.WriteLine("Start...");
 // 7240428184818240427   | 212            | 0
 // 151978145606541879151 | ?              |
 
-
-
-
 Console.WriteLine(IsPrimeProbMillerRabin("176860696068671", 1_000_000));
-
-
 
 watch!.Stop();
 Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");

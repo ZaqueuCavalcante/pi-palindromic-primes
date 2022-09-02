@@ -21,8 +21,6 @@ while (true)
 
 // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - //
 
-
-
 async Task<bool> GetFirstPalindromicPrime(int million, int digits)
 {
     var myPi = new StringBuilder(1_000_000 + digits, 1_000_000 + digits);

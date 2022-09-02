@@ -1,6 +1,12 @@
 # Pi Palindromic Primes Finder
 
-## Numbers
+See challenge here: https://sigmageek.com
+
+Prime checker: https://www.numberempire.com/primenumbers.php
+
+Pi digits API: https://api.pi.delivery/v1/pi?start=0&numberOfDigits=100&radix=10
+
+First palprimes:
 
 | digits | number                | index           | time (seconds) |
 |:------:|:---------------------:|:---------------:|:--------------:|
@@ -22,17 +28,11 @@
 | 16     | -                     | -               | -              |
 | 17     | 30948834143884903     | 6.604.858.609   | 70             |
 | 18     | -                     | -               | -              |
-| 19     | 7240428184818240427   | 72.075.707.767  | ?              |
+| 19     | 7240428184818240427   | 72.075.707.767  | 500            |
 | 20     | -                     | -               | -              |
-| 21     | 151978145606541879151 | 140.672.630.233 | ?              |
+| 21     | 151978145606541879151 | 140.672.630.233 | 6000           |
 
-
-31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170 318272813 679821480865132823066470938446095505822317253594081284811174502841027019385211055596446229489549303819
-
-
-## Guess
-
-### Guess with exponential regression
+## Guess to first 21 digits palprime
 
 #### y = e^(0.64305387405183245253 + 1.28183914103204066315*x)
 
@@ -48,45 +48,6 @@
 | 21     | 880.347.462.679 | 933.004.476.480   | ?               | ?     |
 
 
-palindromic=359342190050091243953 ---- in index=880347462679 ---- of file=pi_million_880347
-
-
-
-
-| start_million | end_million | found |
-|:-------------:|:-----------:|:-----:|
-| 0             | 79_999      | false | (Not check middle)
-| 80_000        | 99_999      | false |
-| 100_000       | 129_999     |       |
-| 100_000       | 129_999     |       |
-| 100_000       | 129_999     |       |
-| 200_000       | 129_999     |       |
-| 860.000       | 880.347     | true  | 359342190050091243953 | index=880.347.462.679
-
-
-
-palindromic=956906398797893609659 ---- in index=133052 ---- of file=pi_million_134617
-palindromic=393121574070475121393 ---- in index=798404 ---- of file=pi_million_138923
-palindromic=151978145606541879151 ---- in index=630233 ---- of file=pi_million_140672
-
-
-
-
-palindromic=761342770575077243167 ---- in index=652435 ---- of file=pi_million_80877
-palindromic=370232660090066232073 ---- in index=732289 ---- of file=pi_million_203138
-palindromic=197040983515389040791 ---- in index=682986 ---- of file=pi_million_218934
-palindromic=922996824979428699229 ---- in index=880816 ---- of file=pi_million_229739
-palindromic=351996789919987699153 ---- in index=932842 ---- of file=pi_million_271964
-palindromic=102737176454671737201 ---- in index=796834 ---- of file=pi_million_276069
-
-
-
-
-
-
-palindromic=36336834991019943863363 ---- with digits=23 ---- in index=76493992135
-palindromic=7956862182723272812686597 ---- with digits=25 ---- in index=83804102852
-palindromic=36293381799299718339263 ---- with digits=23 ---- in index=85775055016
 
 
 
