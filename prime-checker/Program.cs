@@ -8,19 +8,19 @@ using System.Security.Cryptography;
 // Factoring with Elliptic Curves - https://youtu.be/2JlpeQWtGH8
 // 1º -> Fermat Test for a bunch of random bases (make optimizations)
 
-bool IsPrimeTrivial(string number)
-{
-    BigInteger numberAsIint = BigInteger.Parse(number);
+// bool IsPrimeTrivial(string number)
+// {
+//     BigInteger numberAsIint = BigInteger.Parse(number);
 
-    if (numberAsIint % 2 == 0) return false;
+//     if (numberAsIint % 2 == 0) return false;
 
-    BigInteger max = (BigInteger) Math.Sqrt(double.Parse(number));
-    for (BigInteger d = 3; d*d < numberAsIint; d += 2)
-    {
-        if (numberAsIint % d == 0) return false;
-    }
-    return true;
-}
+//     BigInteger max = (BigInteger) Math.Sqrt(double.Parse(number));
+//     for (BigInteger d = 3; d*d < numberAsIint; d += 2)
+//     {
+//         if (numberAsIint % d == 0) return false;
+//     }
+//     return true;
+// }
 
 bool IsPrimeProbMillerRabin(string number, int certainty)
 {

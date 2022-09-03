@@ -1,100 +1,102 @@
-﻿using System.Text;
-using System.Diagnostics;
+﻿using System.Diagnostics;
+using System.Text;
 
-var watch = Stopwatch.StartNew();
-Console.WriteLine("Loading digits...");
-
-var million = 0;
-var myPi = new StringBuilder(3_000_000);
-
-for (int i = 0; i < 3; i++)
+async Task<char[]> GetDigits(string fileName, int million)
 {
-    var billion = (int) (million / 1000);
-    var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
-    myPi.Append(await File.ReadAllTextAsync(fileName));
-    million++;
+    using var stream = File.OpenRead(fileName);
+    using var reader = new StreamReader(stream, Encoding.UTF8);
+
+    var digits = 2_000_000;
+
+    stream.Seek((long) million * (long) 1_000_000, SeekOrigin.Begin);
+    char[] buffer = new char[digits];
+    await reader.ReadBlockAsync(buffer, 0, digits);
+
+    return buffer;
 }
 
-Console.WriteLine("Digits loaded...");
-
-ulong index = 0;
-var start = 0;
-var center = 1;
-var end = 2;
-
-while (index >= 0)
+async Task<bool> ProcessOneMillion(string fileName, int million)
 {
-    if (myPi[start] == myPi[end])
+    var digits = 2_000_000;
+    var myPi = new StringBuilder(digits, digits);
+    myPi.Append(await GetDigits(fileName, million));
+
+    ulong finalIndex = (ulong) 1_500_000;
+
+    ulong index = 500_000;
+    var center = 500_000;
+    var start = center - 1;
+    var end = center + 1;
+
+    while (true)
     {
-        while (true)
+        if (myPi[start] == myPi[end])
         {
-            start --;
-            end ++;
-            if (myPi[start] != myPi[end])
+            while (true)
             {
-                start ++;
-                end --;
-                break;
+                start --;
+                end ++;
+                if (myPi[start] != myPi[end])
+                {
+                    start ++;
+                    end --;
+                    break;
+                }
+            }
+            if (myPi[end] is '1' or '3' or '7' or '9')
+            {
+                var pppDigits = end - start + 1;
+                var initialOff = (ulong) million * (ulong) 1_000_000;
+                if (pppDigits >= 21)
+                {
+                    var number = myPi.ToString(start, pppDigits);
+                    ulong off = (ulong) (pppDigits+1)/2 - 1;
+                    Console.WriteLine($"palindromic={number} ---- with digits={pppDigits} ---- in index={initialOff+index-off-1}");
+                }
             }
         }
-        if (myPi[end] is '1' or '3' or '7' or '9')
+
+        index ++;
+
+        if (index == finalIndex)
         {
-            var digits = end - start + 1;
-            if (digits >= 19)
-            {
-                var number = myPi.ToString(start, digits);
-                ulong off = (ulong) (digits+1)/2 - 1;
-                Console.WriteLine($"palindromic={number} ---- with digits={digits} ---- in index={index - off}");
-            }
+            return true;
         }
-    }
 
-    index ++;
-
-    if (index == (ulong) (million-1) * 1_000_000)
-    {
-        var aux = myPi.ToString(1_000_000, 2_000_000);
-        myPi = new StringBuilder(3_000_000);
-        myPi.Append(aux);
-
-        var billion = (int) (million / 1000);
-        var fileName = $"..\\pi_billion_{billion}_{billion+1}\\pi_million_{million}_{million+1}.txt";
-        myPi.Append(await File.ReadAllTextAsync(fileName));
-        million++;
-
-        center = 1_000_000;
+        center ++;
         start = center - 1;
         end = center + 1;
-        continue;
+    }
+}
+
+
+
+
+var watch = Stopwatch.StartNew();
+Console.WriteLine("Loading first digits...");
+
+var fileName = "C:\\Users\\Zaqueu\\Downloads\\first_100_billions.txt";
+
+var million = 0;
+
+while (million < 95_000)
+{
+    var tasks = new List<Task>();
+
+    for (int i = 0; i < 500; i++)
+    {
+        tasks.Add(ProcessOneMillion(fileName, million));
+        million ++;
     }
 
-    center ++;
-    start = center - 1;
-    end = center + 1;
+    await Task.WhenAll(tasks);
 }
 
 watch!.Stop();
 Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 
-// 0 to 500 millions - only 15 digits pal finded
-// palindromic=330793646397033 ---- in index=28943311 ---- of file=pi_million_500
-// palindromic=192821202128291 ---- in index=30060610 ---- of file=pi_million_500
-// palindromic=144523181325441 ---- in index=43094386 ---- of file=pi_million_500
-// palindromic=394231989132493 ---- in index=52332281 ---- of file=pi_million_500
-// palindromic=197195707591791 ---- in index=65994793 ---- of file=pi_million_500
-// palindromic=306490717094603 ---- in index=109262288 ---- of file=pi_million_500
-// palindromic=180142000241081 ---- in index=109551575 ---- of file=pi_million_500
-// palindromic=101052181250101 ---- in index=124981997 ---- of file=pi_million_500
-// palindromic=986079040970689 ---- in index=178549068 ---- of file=pi_million_500
-// palindromic=189868242868981 ---- in index=256200156 ---- of file=pi_million_500
-// palindromic=929434838434929 ---- in index=276481617 ---- of file=pi_million_500
-// palindromic=176860696068671 ---- in index=298503033 ---- of file=pi_million_500
-// palindromic=728953000359827 ---- in index=437149589 ---- of file=pi_million_500
-// palindromic=190388595883091 ---- in index=438357619 ---- of file=pi_million_500
-// palindromic=113759404957311 ---- in index=477737293 ---- of file=pi_million_500
 
 
-// First 100_000_000 palprimes >= 19 digits
 // palindromic=1673530243420353761 ---- with digits=19 ---- in index=836814879
 // palindromic=1268008427248008621 ---- with digits=19 ---- in index=1202100884
 // palindromic=3593433732373343953 ---- with digits=19 ---- in index=4997740018
@@ -116,8 +118,8 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=9159543969693459519 ---- with digits=19 ---- in index=54502455328
 // palindromic=353332089111980233353 ---- with digits=21 ---- in index=60013316585
 // palindromic=9447748870788477449 ---- with digits=19 ---- in index=62032845882
-// palindromic=140305973282379503041 ---- with digits=21 ---- in index=64850945818
 // palindromic=756529925030529925657 ---- with digits=21 ---- in index=64851776209
+// palindromic=140305973282379503041 ---- with digits=21 ---- in index=64850945818
 // palindromic=7240428184818240427 ---- with digits=19 ---- in index=72075707767
 // palindromic=36336834991019943863363 ---- with digits=23 ---- in index=76493992135
 // palindromic=9125010550550105219 ---- with digits=19 ---- in index=78833628390
@@ -135,5 +137,13 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=1804125751575214081 ---- with digits=19 ---- in index=94605800483
 
 
-
+// palindromic=353332089111980233353 ---- with digits=21 ---- in index=60013316585
+// palindromic=140305973282379503041 ---- with digits=21 ---- in index=64850945818
+// palindromic=756529925030529925657 ---- with digits=21 ---- in index=64851776209
+// palindromic=36336834991019943863363 ---- with digits=23 ---- in index=76493992135
+// palindromic=133409054787450904331 ---- with digits=21 ---- in index=78938245258
+// palindromic=738142485717584241837 ---- with digits=21 ---- in index=79633648073
+// palindromic=761342770575077243167 ---- with digits=21 ---- in index=80877652435
+// palindromic=7956862182723272812686597 ---- with digits=25 ---- in index=83804102852
+// palindromic=36293381799299718339263 ---- with digits=23 ---- in index=85775055016
 
