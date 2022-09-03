@@ -6,7 +6,7 @@ async Task<char[]> GetDigits(string fileName, int million)
     using var stream = File.OpenRead(fileName);
     using var reader = new StreamReader(stream, Encoding.UTF8);
 
-    var digits = 2_000_000;
+    var digits = 2_020_000;
 
     stream.Seek((long) million * (long) 1_000_000, SeekOrigin.Begin);
     char[] buffer = new char[digits];
@@ -17,14 +17,14 @@ async Task<char[]> GetDigits(string fileName, int million)
 
 async Task<bool> ProcessOneMillion(string fileName, int million)
 {
-    var digits = 2_000_000;
+    var digits = 2_020_000;
     var myPi = new StringBuilder(digits, digits);
     myPi.Append(await GetDigits(fileName, million));
 
-    ulong finalIndex = (ulong) 1_500_000;
+    ulong finalIndex = (ulong) 2_010_000;
 
-    ulong index = 500_000;
-    var center = 500_000;
+    ulong index = 10_000;
+    var center = 10_000;
     var start = center - 1;
     var end = center + 1;
 
@@ -47,7 +47,7 @@ async Task<bool> ProcessOneMillion(string fileName, int million)
             {
                 var pppDigits = end - start + 1;
                 var initialOff = (ulong) million * (ulong) 1_000_000;
-                if (pppDigits >= 21)
+                if (pppDigits >= 19)
                 {
                     var number = myPi.ToString(start, pppDigits);
                     ulong off = (ulong) (pppDigits+1)/2 - 1;
@@ -75,18 +75,18 @@ async Task<bool> ProcessOneMillion(string fileName, int million)
 var watch = Stopwatch.StartNew();
 Console.WriteLine("Loading first digits...");
 
-var fileName = "C:\\Users\\Zaqueu\\Downloads\\first_100_billions.txt";
+var fileName = "C:\\Users\\Zaqueu\\Downloads\\billion_0_100.txt";
 
 var million = 0;
 
-while (million < 95_000)
+while (million < 99_900)
 {
     var tasks = new List<Task>();
 
     for (int i = 0; i < 500; i++)
     {
         tasks.Add(ProcessOneMillion(fileName, million));
-        million ++;
+        million += 2;
     }
 
     await Task.WhenAll(tasks);
@@ -94,7 +94,6 @@ while (million < 95_000)
 
 watch!.Stop();
 Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
-
 
 
 // palindromic=1673530243420353761 ---- with digits=19 ---- in index=836814879
@@ -146,4 +145,5 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=761342770575077243167 ---- with digits=21 ---- in index=80877652435
 // palindromic=7956862182723272812686597 ---- with digits=25 ---- in index=83804102852
 // palindromic=36293381799299718339263 ---- with digits=23 ---- in index=85775055016
+
 
