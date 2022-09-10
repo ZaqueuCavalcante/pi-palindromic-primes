@@ -1,0 +1,948 @@
+﻿Benchmark Validation File - DO NOT MODIFY! If you do, it will fail validation.
+
+Validation Version:    1.3
+
+Program:               y-cruncher v0.7.8 Build 9507
+Tuning:                18-CNL ~ Shinoa
+
+User:                  None Specified - You can edit this in "Username.txt".
+
+Operating System:      Linux 5.10.0-10-cloud-amd64 x86_64
+
+Processor(s):
+    Name:              Intel(R) Xeon(R) CPU @ 2.60GHz
+    Logical Cores:     64
+    Physical Cores:    64
+    Sockets:           2
+    NUMA Nodes:        2
+    Base Frequency:    2,599,987,648 Hz
+
+Motherboard:
+    Manufacturer:      Google
+    Model:             Google Compute Engine
+    Version:           
+    Serial Number:     Suppressed - Personally identifiable information is opt-in only.
+
+Memory:
+    Usable Memory:     913,099,632,640 ( 850 GiB)
+    Total Memory:      Unable to Detect
+
+Constant:              Pi
+Algorithm:             Chudnovsky (1988)
+Decimal Digits:        100,000,000,000,000
+Hexadecimal Digits:    83,048,202,372,185
+Computation Mode:      Swap Mode
+Threading Mode:        Cilk Plus Work-Stealing  ->  64 / 64
+Working Memory:        877,177,659,072 ( 817 GiB)
+Total Memory:          885,837,004,800 ( 825 GiB)
+
+Logical Largest Checkpoint:    150,215,548,774,744 ( 137 TiB)
+Logical Peak Disk Usage:       514,540,112,731,728 ( 468 TiB)
+Logical Disk Bytes Read:       43,512,817,114,627,392 (38.6 PiB)
+Logical Disk Bytes Written:    38,491,754,746,253,856 (34.2 PiB)
+
+Configuration Dump:
+{
+    Constant : {
+        Constant : "pi"
+        Algorithm : "chudnovsky"
+    }
+    ComputeSize : {
+        DecimalDigits : 100000000000000
+        EnableHexDigits : "true"
+    }
+    Output : {
+        Path : "/mnt/y-cruncher/results"
+        OutputEnable : "true"
+        DigitsPerFile : 100000000000
+    }
+    OutputVerify : "true"
+    Mode : "swap"
+    Parallelism : {
+        TaskDecomposition : 64
+        Framework : "cilk"
+        WorkerThreads : 64
+    }
+    Allocator : {
+        Allocator : "interleave-libnuma"
+        LockedPages : "attempt"
+        Nodes : [0 1]
+    }
+    Memory : 885837004800
+    Checkpointing : {
+        Enabled : "true"
+        PostCheckpointCommand : "./create-snapshot.sh 2>&1 >> create-snapshot.log"
+    }
+    FarMemoryTuning : {
+        BytesPerSeek : 15728640
+        ParallelAccess : "none"
+    }
+    FarMemoryConfig : {
+        Framework : "disk-raid0"
+        InterleaveWidth : 262144
+        BufferPerLane : 134217728
+        Checksums : "true"
+        RawIO : "true"
+        Lanes : [
+            {   //  Lane 0
+                Path : "/mnt/disk0"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 1
+                Path : "/mnt/disk1"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 2
+                Path : "/mnt/disk2"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 3
+                Path : "/mnt/disk3"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 4
+                Path : "/mnt/disk4"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 5
+                Path : "/mnt/disk5"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 6
+                Path : "/mnt/disk6"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 7
+                Path : "/mnt/disk7"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 8
+                Path : "/mnt/disk8"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 9
+                Path : "/mnt/disk9"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 10
+                Path : "/mnt/disk10"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 11
+                Path : "/mnt/disk11"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 12
+                Path : "/mnt/disk12"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 13
+                Path : "/mnt/disk13"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 14
+                Path : "/mnt/disk14"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 15
+                Path : "/mnt/disk15"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 16
+                Path : "/mnt/disk16"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 17
+                Path : "/mnt/disk17"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 18
+                Path : "/mnt/disk18"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 19
+                Path : "/mnt/disk19"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 20
+                Path : "/mnt/disk20"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 21
+                Path : "/mnt/disk21"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 22
+                Path : "/mnt/disk22"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 23
+                Path : "/mnt/disk23"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 24
+                Path : "/mnt/disk24"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 25
+                Path : "/mnt/disk25"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 26
+                Path : "/mnt/disk26"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 27
+                Path : "/mnt/disk27"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 28
+                Path : "/mnt/disk28"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 29
+                Path : "/mnt/disk29"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 30
+                Path : "/mnt/disk30"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 31
+                Path : "/mnt/disk31"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 32
+                Path : "/mnt/disk32"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 33
+                Path : "/mnt/disk33"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 34
+                Path : "/mnt/disk34"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 35
+                Path : "/mnt/disk35"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 36
+                Path : "/mnt/disk36"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 37
+                Path : "/mnt/disk37"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 38
+                Path : "/mnt/disk38"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 39
+                Path : "/mnt/disk39"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 40
+                Path : "/mnt/disk40"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 41
+                Path : "/mnt/disk41"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 42
+                Path : "/mnt/disk42"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 43
+                Path : "/mnt/disk43"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 44
+                Path : "/mnt/disk44"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 45
+                Path : "/mnt/disk45"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 46
+                Path : "/mnt/disk46"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 47
+                Path : "/mnt/disk47"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 48
+                Path : "/mnt/disk48"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 49
+                Path : "/mnt/disk49"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 50
+                Path : "/mnt/disk50"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 51
+                Path : "/mnt/disk51"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 52
+                Path : "/mnt/disk52"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 53
+                Path : "/mnt/disk53"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 54
+                Path : "/mnt/disk54"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 55
+                Path : "/mnt/disk55"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 56
+                Path : "/mnt/disk56"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 57
+                Path : "/mnt/disk57"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 58
+                Path : "/mnt/disk58"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+            {   //  Lane 59
+                Path : "/mnt/disk59"
+                BufferAllocator : {
+                    Allocator : "interleave-libnuma"
+                    LockedPages : "attempt"
+                    Nodes : [1]
+                }
+                WorkerThreadCores : [32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61 62 63]
+                WorkerThreadPriority : 2
+            }
+        ]
+    }
+}
+
+Start Date:            Thu Oct 14 04:45:44 2021
+End Date:              Mon Mar 21 04:16:52 2022
+
+Total Computation Time:    11303429.462 seconds
+Start-to-End Wall Time:    13649467.651 seconds
+
+CPU Utilization:           2185.38 %  +  17.43 % kernel overhead
+Multi-core Efficiency:     34.15 %  +  0.27 % kernel overhead
+
+Last Decimal Digits:
+4658718895 1242883556 4671544483 9873493812 1206904813  :  99,999,999,999,950
+2656719174 5255431487 2142102057 7077336434 3095295560  :  100,000,000,000,000
+
+Last Hexadecimal Digits:
+4757d05f3f 35d1b41de3 7d8b3b2289 a4c8a3eb18 262cc3818d  :  83,048,202,372,150
+28c4dfa9e1 ff6a0987e9 a81da14ccb 37125
+
+SHA256-dec(100,000,000,000,001 - 100,000,000,000,100): 7fc0b0be87ccc178c3a347e1a61ac7012cd48244367891c7faca871c39ed1de0
+
+Dec Counts: {9999995833530,10000001801101,10000002114059,10000005646995,10000001346801,9999994262591,10000000625105,9999997715558,10000005776475,9999994877785}
+Hex Counts: {5190511232073,5190515900411,5190511077201,5190511389970,5190510203197,5190513755326,5190514548169,5190511827178,5190512826244,5190512286196,5190507703110,5190516294024,5190511648873,5190514095697,5190512890167,5190514694349}
+
+Dec Hash: Floor(|x| * 10^dec) mod (2^61 - 1) = 2110071118721379194
+Hex Hash: Floor(|x| * 16^hex) mod (2^61 - 1) = 707214547308370853
+
+Spot Check:                 Good through 50,000,000,000,000
+Timer Sanity Check:         Disabled due to checkpoint restart
+Frequency Sanity Check:     Disabled in this version of y-cruncher
+Reference Clock:            TSC
+Reference Clock 0:          0
+Reference Clock 1:          99,449,987
+Reference Clock 2:          1,036,070
+Is Debugger Present:        Unknown
+Is Contiguous:              No
+ECC Recovered Errors:       0
+Colors:                     Yes
+
+Event Log:
+Thu Oct 14 04:45:44 2021	0.213	Working Memory
+Thu Oct 14 04:47:33 2021	108.487	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Thu Oct 14 04:47:33 2021	108.487	Twiddle Tables
+Thu Oct 14 04:47:33 2021	108.731	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Thu Oct 14 04:47:33 2021	108.732	I/O Buffers
+Thu Oct 14 04:47:34 2021	110.007	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Thu Oct 14 04:47:34 2021	110.007	Begin Computation
+Thu Oct 14 04:47:34 2021	110.007	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Thu Oct 14 04:47:34 2021	110.007	Series: A ( 74 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.024	Series: A ( 73 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.064	Series: A ( 72 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.106	Series: A ( 71 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.149	Series: E ( 70 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.190	Series: E ( 69 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.234	Series: E ( 68 ) 0.000%
+Thu Oct 14 04:47:34 2021	110.284	Series: E ( 67 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.342	Series: E ( 66 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.408	Series: E ( 65 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.488	Series: E ( 64 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.581	Series: E ( 63 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.698	Series: E ( 62 ) 0.000%
+Thu Oct 14 04:47:35 2021	110.836	Series: E ( 61 ) 0.000%
+Thu Oct 14 04:47:35 2021	111.011	Series: E ( 60 ) 0.000%
+Thu Oct 14 04:47:35 2021	111.219	Series: E ( 59 ) 0.000%
+Thu Oct 14 04:47:36 2021	111.484	Series: E ( 58 ) 0.000%
+Thu Oct 14 04:47:36 2021	111.813	Series: E ( 57 ) 0.000%
+Thu Oct 14 04:47:36 2021	112.265	Series: E ( 56 ) 0.000%
+Thu Oct 14 04:47:37 2021	112.820	Series: E ( 55 ) 0.000%
+Thu Oct 14 04:47:38 2021	113.537	Series: E ( 54 ) 0.000%
+Thu Oct 14 04:47:39 2021	114.453	Series: E ( 53 ) 0.000%
+Thu Oct 14 04:47:40 2021	115.583	Series: E ( 52 ) 0.000%
+Thu Oct 14 04:47:41 2021	117.058	Series: E ( 51 ) 0.001%
+Thu Oct 14 04:47:43 2021	118.972	Series: E ( 50 ) 0.001%
+Thu Oct 14 04:47:46 2021	121.361	Series: E ( 49 ) 0.001%
+Thu Oct 14 04:47:49 2021	124.423	Series: E ( 48 ) 0.001%
+Thu Oct 14 04:47:53 2021	128.356	Series: E ( 47 ) 0.001%
+Thu Oct 14 04:47:58 2021	133.572	Series: E ( 46 ) 0.002%
+Thu Oct 14 04:48:04 2021	140.079	Series: E ( 45 ) 0.002%
+Thu Oct 14 04:48:13 2021	148.587	Series: E ( 44 ) 0.003%
+Thu Oct 14 04:48:24 2021	159.751	Series: E ( 43 ) 0.004%
+Thu Oct 14 04:48:38 2021	173.891	Series: E ( 42 ) 0.005%
+Thu Oct 14 04:48:57 2021	192.483	Series: E ( 41 ) 0.006%
+Thu Oct 14 04:49:21 2021	216.573	Series: E ( 40 ) 0.007%
+Thu Oct 14 04:49:51 2021	247.229	Series: E ( 39 ) 0.009%
+Thu Oct 14 04:50:31 2021	286.945	Series: E ( 38 ) 0.012%
+Thu Oct 14 04:51:23 2021	338.977	Series: E ( 37 ) 0.015%
+Thu Oct 14 04:52:29 2021	404.569	Series: E ( 36 ) 0.019%
+Thu Oct 14 04:53:54 2021	490.281	Series: E ( 35 ) 0.024%
+Thu Oct 14 04:55:44 2021	599.969	Series: E ( 34 ) 0.030%
+Thu Oct 14 04:58:06 2021	741.572	Series: E ( 33 ) 0.038%
+Thu Oct 14 05:01:09 2021	924.725	Series: E ( 32 ) 0.047%
+Thu Oct 14 05:05:01 2021	1157.135	Series: E ( 31 ) 0.060%
+Thu Oct 14 05:10:07 2021	1463.067	Series: E ( 30 ) 0.075%
+Thu Oct 14 05:16:38 2021	1853.459	Series: E ( 29 ) 0.094%
+Thu Oct 14 05:25:06 2021	2361.598	Series: E ( 28 ) 0.119%
+Thu Oct 14 05:36:21 2021	3036.906	Series: S ( 27 ) 0.150%
+Thu Oct 14 05:52:30 2021	4006.147	Series: S ( 26 ) 0.189%
+Thu Oct 14 06:13:08 2021	5243.404	Series: S ( 25 ) 0.238%
+Thu Oct 14 06:42:03 2021	6979.108	Series: S ( 24 ) 0.300%
+Thu Oct 14 07:22:13 2021	9388.652	Series: S ( 23 ) 0.378%
+Thu Oct 14 08:28:02 2021	13338.221	Series: S ( 22 ) 0.476%
+Thu Oct 14 09:53:59 2021	18494.323	Series: S ( 21 ) 0.600%
+Thu Oct 14 11:50:54 2021	25509.415	Series: S ( 20 ) 0.755%
+Thu Oct 14 14:34:14 2021	35310.175	Series: S ( 19 ) 0.952%
+Thu Oct 14 18:10:49 2021	48304.718	Series: S ( 18 ) 1.199%
+Thu Oct 14 22:55:26 2021	65382.078	Series: S ( 17 ) 1.511%
+
+Fri Oct 15 00:47:41 2021	0.000	--- Resuming From Checkpoint ---
+Fri Oct 15 00:47:42 2021	0.197	Working Memory
+Fri Oct 15 00:49:26 2021	104.699	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Fri Oct 15 00:49:26 2021	104.699	Twiddle Tables
+Fri Oct 15 00:49:26 2021	104.932	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Fri Oct 15 00:49:26 2021	104.932	I/O Buffers
+Fri Oct 15 00:49:27 2021	106.076	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Fri Oct 15 00:49:27 2021	106.076	Resuming Computation
+Fri Oct 15 00:49:27 2021	106.076	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Fri Oct 15 00:49:27 2021	106.160	Series: S ( 17 ) 1.511%
+Fri Oct 15 06:47:23 2021	21581.857	Series: S ( 16 ) 1.903%
+Fri Oct 15 15:22:35 2021	52493.328	Series: S ( 15 ) 2.398%
+Sat Oct 16 02:55:30 2021	94068.939	Series: S ( 14 ) 3.022%
+Sat Oct 16 18:33:16 2021	150335.079	Series: S ( 13 ) 3.807%
+Sun Oct 17 14:46:46 2021	223145.149	Series: S ( 12 ) 4.798%
+Mon Oct 18 17:18:42 2021	318660.295	Series: S ( 11 ) 6.046%
+Wed Oct 20 05:05:14 2021	447453.056	Series: S ( 10 ) 7.619%
+
+Fri Oct 22 01:43:25 2021	0.000	--- Resuming From Checkpoint ---
+Fri Oct 22 01:43:26 2021	0.653	Working Memory
+Fri Oct 22 01:45:05 2021	99.598	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Fri Oct 22 01:45:05 2021	99.598	Twiddle Tables
+Fri Oct 22 01:45:05 2021	99.822	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Fri Oct 22 01:45:05 2021	99.822	I/O Buffers
+Fri Oct 22 01:45:06 2021	100.875	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Fri Oct 22 01:45:06 2021	100.875	Resuming Computation
+Fri Oct 22 01:45:06 2021	100.875	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Fri Oct 22 01:45:06 2021	100.913	Series: S ( 10 ) 7.619%
+Sat Oct 23 03:31:21 2021	92876.281	Series: S ( 9 ) 9.603%
+
+Sun Oct 24 04:12:15 2021	0.000	--- Resuming From Checkpoint ---
+Sun Oct 24 04:12:16 2021	0.301	Working Memory
+Sun Oct 24 04:14:22 2021	126.944	Working Memory:  817 GiB  (locked, spread: 99%/2)
+Sun Oct 24 04:14:22 2021	126.944	Twiddle Tables
+Sun Oct 24 04:14:23 2021	127.170	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Sun Oct 24 04:14:23 2021	127.170	I/O Buffers
+Sun Oct 24 04:14:24 2021	128.187	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Sun Oct 24 04:14:24 2021	128.187	Resuming Computation
+Sun Oct 24 04:14:24 2021	128.187	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Sun Oct 24 04:14:24 2021	128.229	Series: S ( 9 ) 9.603%
+Tue Oct 26 00:32:25 2021	159609.094	Series: S ( 8 ) 12.105%
+Fri Oct 29 10:40:30 2021	455294.105	Series: S ( 7 ) 15.262%
+
+Wed Nov  3 19:56:41 2021	0.000	--- Resuming From Checkpoint ---
+Wed Nov  3 19:56:41 2021	0.215	Working Memory
+Wed Nov  3 19:58:42 2021	121.147	Working Memory:  817 GiB  (locked, spread: 99%/2)
+Wed Nov  3 19:58:42 2021	121.148	Twiddle Tables
+Wed Nov  3 19:58:42 2021	121.375	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Wed Nov  3 19:58:42 2021	121.375	I/O Buffers
+Wed Nov  3 19:58:43 2021	122.405	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Wed Nov  3 19:58:43 2021	122.405	Resuming Computation
+Wed Nov  3 19:58:43 2021	122.405	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Wed Nov  3 19:58:43 2021	122.460	Series: S ( 7 ) 15.262%
+Thu Nov  4 14:34:14 2021	67053.114	Series: S ( 6 ) 19.245%
+
+Thu Nov  4 19:04:41 2021	0.000	--- Resuming From Checkpoint ---
+Thu Nov  4 19:04:41 2021	0.220	Working Memory
+Thu Nov  4 19:06:23 2021	102.633	Working Memory:  817 GiB  (locked, spread: 99%/2)
+Thu Nov  4 19:06:23 2021	102.633	Twiddle Tables
+Thu Nov  4 19:06:23 2021	102.878	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Thu Nov  4 19:06:23 2021	102.878	I/O Buffers
+Thu Nov  4 19:06:24 2021	103.879	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Thu Nov  4 19:06:24 2021	103.879	Resuming Computation
+Thu Nov  4 19:06:24 2021	103.879	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Thu Nov  4 19:06:25 2021	103.921	Series: S ( 6 ) 19.245%
+
+Wed Nov 17 01:21:08 2021	0.000	--- Resuming From Checkpoint ---
+Wed Nov 17 01:21:08 2021	0.384	Working Memory
+Wed Nov 17 01:22:43 2021	95.215	Working Memory:  817 GiB  (locked, spread: 99%/2)
+Wed Nov 17 01:22:43 2021	95.216	Twiddle Tables
+Wed Nov 17 01:22:43 2021	95.468	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Wed Nov 17 01:22:43 2021	95.468	I/O Buffers
+Wed Nov 17 01:22:44 2021	96.420	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Wed Nov 17 01:22:44 2021	96.420	Resuming Computation
+Wed Nov 17 01:22:44 2021	96.421	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Wed Nov 17 01:22:44 2021	96.476	Series: S ( 6 ) 19.245%
+Sat Nov 20 09:18:20 2021	287831.804	Series: S ( 5 ) 24.274%
+
+Wed Nov 24 17:10:41 2021	0.000	--- Resuming From Checkpoint ---
+Wed Nov 24 17:10:41 2021	0.297	Working Memory
+Wed Nov 24 17:12:27 2021	105.390	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Wed Nov 24 17:12:27 2021	105.390	Twiddle Tables
+Wed Nov 24 17:12:27 2021	105.619	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Wed Nov 24 17:12:27 2021	105.619	I/O Buffers
+Wed Nov 24 17:12:28 2021	106.600	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Wed Nov 24 17:12:28 2021	106.600	Resuming Computation
+Wed Nov 24 17:12:28 2021	106.600	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Wed Nov 24 17:12:28 2021	106.651	Series: S ( 5 ) 24.274%
+
+Fri Nov 26 16:29:29 2021	0.000	--- Resuming From Checkpoint ---
+Fri Nov 26 16:29:30 2021	0.299	Working Memory
+Fri Nov 26 16:31:24 2021	115.067	Working Memory:  817 GiB  (locked, spread: 99%/2)
+Fri Nov 26 16:31:24 2021	115.067	Twiddle Tables
+Fri Nov 26 16:31:25 2021	115.301	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Fri Nov 26 16:31:25 2021	115.301	I/O Buffers
+Fri Nov 26 16:31:26 2021	116.280	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Fri Nov 26 16:31:26 2021	116.280	Resuming Computation
+Fri Nov 26 16:31:26 2021	116.280	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Fri Nov 26 16:31:26 2021	116.319	Series: S ( 5 ) 24.274%
+Mon Nov 29 19:11:37 2021	268927.467	Series: S ( 4 ) 30.630%
+
+Wed Dec  8 17:10:25 2021	0.000	--- Resuming From Checkpoint ---
+Wed Dec  8 17:10:25 2021	0.297	Working Memory
+Wed Dec  8 17:12:11 2021	106.110	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Wed Dec  8 17:12:11 2021	106.110	Twiddle Tables
+Wed Dec  8 17:12:11 2021	106.354	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Wed Dec  8 17:12:11 2021	106.354	I/O Buffers
+Wed Dec  8 17:12:12 2021	107.289	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Wed Dec  8 17:12:12 2021	107.289	Resuming Computation
+Wed Dec  8 17:12:12 2021	107.289	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Wed Dec  8 17:12:12 2021	107.336	Series: S ( 4 ) 30.630%
+Thu Dec 16 02:50:25 2021	639599.632	Series: S ( 3 ) 38.670%
+Mon Dec 27 23:13:44 2021	1663398.929	Series: S ( 2 ) 48.857%
+
+Thu Dec 30 01:49:32 2021	0.000	--- Resuming From Checkpoint ---
+Thu Dec 30 01:49:33 2021	0.274	Working Memory
+Thu Dec 30 01:51:26 2021	114.109	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Thu Dec 30 01:51:26 2021	114.109	Twiddle Tables
+Thu Dec 30 01:51:27 2021	114.397	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Thu Dec 30 01:51:27 2021	114.397	I/O Buffers
+Thu Dec 30 01:51:28 2021	115.498	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Thu Dec 30 01:51:28 2021	115.498	Resuming Computation
+Thu Dec 30 01:51:28 2021	115.498	Series CommonP2B3...  7,051,366,934,836 terms  (Expansion Factor = 3.757)
+Thu Dec 30 01:51:28 2021	115.539	Series: S ( 2 ) 48.857%
+Wed Jan 12 13:52:10 2022	1166557.841	Series: S ( 1 ) 61.801%
+Tue Feb  1 18:45:44 2022	2912171.714	Series: S ( 0 ) 78.339%
+Mon Feb 28 04:52:30 2022	5194977.603	Finishing Series
+Mon Feb 28 12:05:59 2022	5220986.286	Large Division
+Fri Mar  4 19:57:11 2022	5594858.927	InvSqrt(10005)...
+Mon Mar  7 18:25:42 2022	5848570.201	Large Multiply
+Wed Mar  9 16:04:51 2022	6012918.290	Verify Large Multiply
+
+Wed Mar  9 20:31:04 2022	0.000	--- Resuming From Checkpoint ---
+Wed Mar  9 20:31:04 2022	0.202	Working Memory
+Wed Mar  9 20:32:37 2022	93.472	Working Memory:  817 GiB  (locked, spread: 100%/2)
+Wed Mar  9 20:32:37 2022	93.472	Twiddle Tables
+Wed Mar  9 20:32:37 2022	93.695	Twiddle Tables:  578 MiB  (locked, spread: 99%/2)
+Wed Mar  9 20:32:37 2022	93.695	I/O Buffers
+Wed Mar  9 20:32:38 2022	94.786	I/O Buffers: 7.50 GiB  (locked, spread: 100%/1)
+Wed Mar  9 20:32:38 2022	94.786	Resuming Computation
+Wed Mar  9 20:32:38 2022	94.801	Writing Hexadecimal Digits
+Thu Mar 10 07:11:37 2022	38433.278	Base Converting
+Thu Mar 17 08:47:01 2022	648957.943	Writing Decimal Digits
+Thu Mar 17 19:39:20 2022	688096.700	Verifying Base Conversion
+Sun Mar 20 08:35:04 2022	907439.995	Verifying Binary Output
+Sun Mar 20 09:35:44 2022	911080.118	Verifying Decimal Output
+Sun Mar 20 19:01:40 2022	945036.623	Verifying Hexadecimal Output
+Mon Mar 21 04:16:52 2022	978348.326	End Computation
+
+----
+
+Checksum0: 39be6f81353623bd5d9a471b1ddbe154abf093fbae7eb8e26a3d4c66ac4debff19b2df60b59e90c9a60cb155a9f3cddd450d41995e4a0fa4a62e76565f0f9d6d
+Checksum1: c69ba14c3074beb7c019066130fe55f9f4dd20d6a3c26bec96a22e4f46e45a7b83804854bebea5ffbe7a6d21fa725b2b361df4cc56a8432d592605424760c02a

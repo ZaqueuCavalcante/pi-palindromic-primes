@@ -48,6 +48,14 @@ First palprimes:
 | 21     | 880.347.462.679 | 933.004.476.480   | ?               | ?     |
 
 
+## Find Palindromes
 
+- Download Pi_0.ycd and Pi_1.ycd
+- Extract 10.000 to 100.000.020.000 digits => Pi_0_1.txt
+- Run C# code for Pi_0_1.txt with lenght >= 21 | Save in output.txt
+- Delete Pi_0.ycd and Pi_0_1.txt files
+- Download Pi_2.ycd
+- Extract 100.000.010.000 to 200.000.020.000 digits => Pi_1_2.txt
+- Run C# code for Pi_1_2.txt... and repeat
 
 

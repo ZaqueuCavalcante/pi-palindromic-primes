@@ -69,17 +69,15 @@ async Task<bool> ProcessOneMillion(string fileName, int million)
     }
 }
 
-
-
-
 var watch = Stopwatch.StartNew();
 Console.WriteLine("Loading first digits...");
 
-var fileName = "C:\\Users\\Zaqueu\\Downloads\\billion_0_100.txt";
+var fileName = "./digits.txt";
 
+ulong start = 0;
 var million = 0;
 
-while (million < 99_900)
+while ((ulong) million < start + (ulong) 100_000)
 {
     var tasks = new List<Task>();
 
@@ -145,5 +143,3 @@ Console.WriteLine($"Duration = {watch.ElapsedMilliseconds/1000} seconds...");
 // palindromic=761342770575077243167 ---- with digits=21 ---- in index=80877652435
 // palindromic=7956862182723272812686597 ---- with digits=25 ---- in index=83804102852
 // palindromic=36293381799299718339263 ---- with digits=23 ---- in index=85775055016
-
-

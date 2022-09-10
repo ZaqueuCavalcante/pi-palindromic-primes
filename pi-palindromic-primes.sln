@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "largest-palprime-finder", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "prime-checker", "prime-checker\prime-checker.csproj", "{716F2016-2880-47FB-A733-0EFD1E7F385D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "pi_splitter", "pi_splitter\pi_splitter.csproj", "{2B7B1237-B2B2-444A-9B03-1614EC6B1E9D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +50,9 @@ Global
 		{716F2016-2880-47FB-A733-0EFD1E7F385D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{716F2016-2880-47FB-A733-0EFD1E7F385D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{716F2016-2880-47FB-A733-0EFD1E7F385D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B7B1237-B2B2-444A-9B03-1614EC6B1E9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B7B1237-B2B2-444A-9B03-1614EC6B1E9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B7B1237-B2B2-444A-9B03-1614EC6B1E9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B7B1237-B2B2-444A-9B03-1614EC6B1E9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
